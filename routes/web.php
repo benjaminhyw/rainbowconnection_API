@@ -26,20 +26,19 @@ Route::get('users', function(){
 
 
 // This one should give me all of the connections associated with a user
-Route::get('/users/{id}', function($id){
-  $user = App\User::find($id);
-  echo $user->fullname . '<br>';
+Route::get('/users/{id}', 'UserController@user'
+);
 
-  foreach($user->connections as $connection){
+Route::get('mypage', function(){
+  $data = array(
+    'var1' => 'Hamburger',
+    'var2' => 'Hot Dog',
+    'var3' => 'French Fries',
+    'users' => App\User::all()
+    );
 
-    $friend_id = $connection->friend_id;
-    //This next bit of code is another way to grab data using queries
-    $friend = DB::table('users')->where('id', $friend_id)->get();
-    echo '<br>' . $friend[0]->fullname  ;
-  };
+  return view('mypage', $data);
 });
-
-
 
 
 
@@ -80,3 +79,7 @@ Route::get('/users/{id}', function($id){
 //   echo "We just deleted an item";
 // });
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
