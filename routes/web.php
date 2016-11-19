@@ -17,17 +17,22 @@ Route::get('/', function () {
 });
 
 //This returns a list of all users
-Route::get('users', function(){
-  $users = App\User::all();
-  foreach($users as $user){
-    echo $user->fullname . '<br>'; 
-  };
-});
+Route::get('users', 'UserController@users'
+);
 
 
 // This one should give me all of the connections associated with a user
 Route::get('/users/{id}', 'UserController@user'
 );
+
+Route::get('/home', 'HomeController@index');
+
+
+Route::get('/admin', function(){
+  echo 'You have access';
+})->middleware('admin');
+
+
 
 Route::get('mypage', function(){
   $data = array(
