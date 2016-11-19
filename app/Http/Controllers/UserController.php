@@ -29,7 +29,9 @@ class UserController extends Controller
 
 
       echo $id;
-      echo $user->fullname  .  '<br>';
+      echo $user->fullname.'<br>';
+
+
 
     }
   }
