@@ -17,7 +17,14 @@ class UserController extends Controller
   public function users(){
     $users = User::all();
     foreach($users as $user){
-      echo $user->fullname . '<br>'; 
+      $id = $user->id;
+
+      
+      echo $id;
+      echo $user->fullname  .  '<br>';
+
     }
   }
 }
+
+
