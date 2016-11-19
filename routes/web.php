@@ -16,20 +16,25 @@ Route::get('/', function () {
     //Main page should return a list of all users on the site, along with their three columns (Full name, favorite color, list of connections)
 });
 
-Route::get('/users/{id}', function($id) {
-    // Should return a list of all users, might be the same as the one above
-  $user = App\User::find($id);
-  echo $user->fullname;
-
+//This returns a list of all users
+Route::get('users', function(){
+  $users = App\User::all();
+  foreach($users as $user){
+    echo $user->fullname . '<br>'; 
+  };
 });
 
 Route::get('/users/{id}', function($id) {
   //This returns information for the user profile we're on
   $user = App\User::find($id);
   echo $user->fullname;
-
 });
 
+Route::get('user_name', function() {
+  //This one will be useful for finding specific queries
+  $user = App\User::where('fullname', '=', 'Mochi')->first();
+  echo $user->id;
+});
 
 //CREATE an item
 Route::post('test', function(){
