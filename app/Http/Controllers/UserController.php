@@ -11,6 +11,6 @@ class UserController extends Controller
 {
     public function user($id){
       $user = User::find($id);
-      return view('user', array('user' => $user));
+      return view('user', compact('user'));
     }
 }
