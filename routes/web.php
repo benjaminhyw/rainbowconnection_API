@@ -11,19 +11,24 @@
 |
 */
 
+
 Route::get('/', function () {
-    return view('welcome');
-    //Main page should return a list of all users on the site, along with their three columns (Full name, favorite color, list of connections)
+  return view('welcome');
 });
 
-//This returns a list of all users
-Route::get('users', 'UserController@users'
-);
+//This returns a JSON file
+Route::get('/json', 'UserController@json');
 
+//This returns a list of all users.  Will act as landing page, before would return welcome view page
+Route::get('/users', 'UserController@users');
 
 // This one should give me all of the connections associated with a user
 Route::get('/users/{id}', 'UserController@user'
 );
+
+Route::get('user', function(){
+  return view('user');
+});
 
 Route::get('mypage', function(){
   $data = array(
