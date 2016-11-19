@@ -7,14 +7,10 @@
 
   <?php
     echo  '<br>';
-  
     foreach($users as $user){
       $id = $user->id;
-
-      echo $id;
-      echo $user->fullname.'<br>';
+      echo '<br><a href='.URL::to('/users').'/'.$id. '>'.$user->fullname.'</a>';
     }
   ?>
-
   </body>
 </html>
