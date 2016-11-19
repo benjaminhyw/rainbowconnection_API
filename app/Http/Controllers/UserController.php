@@ -27,7 +27,7 @@ class UserController extends Controller
     foreach($users as $user){
       $id = $user->id;
 
-      
+
       echo $id;
       echo $user->fullname  .  '<br>';
 
