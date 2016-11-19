@@ -18,6 +18,8 @@ Route::get('/', function () {
 
 Route::get('/users/', function () {
     // Should return a list of all users, might be the same as the one above
+  $user = App\User::first();
+  echo $user->fullname;
 
 });
 
