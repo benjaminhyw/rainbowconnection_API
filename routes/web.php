@@ -11,12 +11,16 @@
 |
 */
 
-//This returns a list of all users.  Will act as landing page, before would return welcome view page
-Route::get('/', 'UserController@users');
+
+Route::get('/', function () {
+  return view('welcome');
+});
 
 //This returns a JSON file
 Route::get('/json', 'UserController@json');
 
+//This returns a list of all users.  Will act as landing page, before would return welcome view page
+Route::get('/users', 'UserController@users');
 
 // This one should give me all of the connections associated with a user
 Route::get('/users/{id}', 'UserController@user'
