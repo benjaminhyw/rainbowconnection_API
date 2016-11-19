@@ -39,7 +39,9 @@ Route::get('/users/{id}', function($id){
   };
 });
 
-
+Route::get('mypage', function(){
+  return view('mypage');
+});
 
 
 
