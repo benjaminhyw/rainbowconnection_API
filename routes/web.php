@@ -79,3 +79,7 @@ Route::get('mypage', function(){
 //   echo "We just deleted an item";
 // });
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
