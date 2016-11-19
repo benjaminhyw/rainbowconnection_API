@@ -25,15 +25,6 @@ Route::get('users', 'UserController@users'
 Route::get('/users/{id}', 'UserController@user'
 );
 
-Route::get('/home', 'HomeController@index');
-
-
-Route::get('/admin', function(){
-  echo 'You have access';
-})->middleware('admin');
-
-
-
 Route::get('mypage', function(){
   $data = array(
     'var1' => 'Hamburger',
