@@ -13,4 +13,11 @@
 
 Route::get('/', function () {
     return view('welcome');
+    //Main page should return a list of all users on the site, along with their three columns (Full name, favorite color, list of connections)
 });
+
+Route::get('/users/', function () {
+    // Should return a list of all users, might be the same as the one above
+
+});
+
