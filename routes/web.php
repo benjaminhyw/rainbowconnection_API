@@ -28,14 +28,14 @@ Route::get('users', function(){
 // This one should give me all of the connections associated with a user
 Route::get('/users/{id}', function($id){
   $user = App\User::find($id);
-  echo $user->fullname;
+  echo $user->fullname . '<br>';
 
   foreach($user->connections as $connection){
 
     $friend_id = $connection->friend_id;
     //This next bit of code is another way to grab data using queries
     $friend = DB::table('users')->where('id', $friend_id)->get();
-    echo '<li>' . $friend[0]->fullname . '</li>';
+    echo '<br>' . $friend[0]->fullname  ;
   };
 });
 
