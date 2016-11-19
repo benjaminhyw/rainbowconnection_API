@@ -9,9 +9,6 @@
 
   <?php
     echo  '<br>';
-
-
-
   
     foreach($user->connections as $connection){
       $friend_id = $connection->friend_id;
