@@ -9,6 +9,14 @@ use App\User;
 
 class UserController extends Controller
 {
+
+  //This creates a JSON file of all my users
+  public function json(){
+    $users = User::all();
+    return $users;
+
+  }
+
   public function user($id){
     $user = User::find($id);
     return view('user', compact('user'));
