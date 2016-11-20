@@ -10,8 +10,15 @@ use App\User;
 class UserController extends Controller
 {
 
-  public function users(){
-    $users = User::all();
+  //Pagination for main page
+  public function users(Request $request)
+  {
+    $users = User::paginate(10);
+    
+    if ($request->ajax()){
+      $view = view('data', compact('users'))->render();
+      return response()->json(['html'=>$view]);
+    }
     return view('users', compact('users'));
   }
 
@@ -27,5 +34,3 @@ class UserController extends Controller
   }
   
 }
-
-
