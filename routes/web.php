@@ -27,15 +27,14 @@ Route::get('/users/{id}', 'UserController@individual'
 Route::post('/users', 'RegisterController@create');
 
 
-// The following routes were made before I had to come back to fix my API.  If you comment out the previous ones and uncomment out the two below, you'll see how I implemented INFINITE PAGINATION on Laravel and the show page for each individual user.
+// The following routes were made before I had to come back to fix my API.  They used to be /users and /users/{id}, but I had to change that.  If you go to them however, you'll see that I implemented INFINITE PAGINATION on Laravel.  The second link takes you to the individual user show page, but I didn't implement infinite pagination there because I had to switch back to fixing my API.
 
+// Initially was the main page.  INFINITE PAGINATION functional.
+Route::get('/infinite', 'UserController@users');
 
-// //This returns a list of all users.  Will act as landing page, before would return welcome view page
-// Route::get('/users', 'UserController@users');
-
-// // This one should give me all of the connections associated with a user
-// Route::get('/users/{id}', 'UserController@user'
-// );
+// Initially each individual's show page.
+Route::get('/individual/{id}', 'UserController@user'
+);
 
 
 
