@@ -1,5 +1,7 @@
 <?php
 
+header('Access-Control-Allow-Origin: *');
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -94,3 +96,8 @@ Route::post('/users', 'RegisterController@create');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+Route::get('{data?}', function()
+{
+    return View::make('app');
+})->where('data', '.*');
