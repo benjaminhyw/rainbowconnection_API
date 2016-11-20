@@ -13,34 +13,43 @@
 
 
 Route::get('/', function () {
-  return view('welcome');
+  return redirect('/users');
 });
 
 //This returns a JSON file
-Route::get('/json', 'UserController@all');
+Route::get('/users', 'UserController@all');
 
-Route::get('/json/{id}', 'UserController@individual'
+Route::get('/users/{id}', 'UserController@individual'
 );
 
-Route::post('/json', 'RegisterController@create');
+Route::post('/users', 'RegisterController@create');
 
-//This returns a list of all users.  Will act as landing page, before would return welcome view page
-Route::get('/users', 'UserController@users');
 
-// This one should give me all of the connections associated with a user
-Route::get('/users/{id}', 'UserController@user'
-);
+// The following routes were made before I had to come back to fix my API.  If you comment out the previous ones and uncomment out the two below, you'll see how I implemented INFINITE PAGINATION on Laravel and the show page for each individual user.
 
-Route::get('mypage', function(){
-  $data = array(
-    'var1' => 'Hamburger',
-    'var2' => 'Hot Dog',
-    'var3' => 'French Fries',
-    'users' => App\User::all()
-    );
 
-  return view('mypage', $data);
-});
+// //This returns a list of all users.  Will act as landing page, before would return welcome view page
+// Route::get('/users', 'UserController@users');
+
+// // This one should give me all of the connections associated with a user
+// Route::get('/users/{id}', 'UserController@user'
+// );
+
+
+
+
+// This code was a tutorial route, left for reference
+//
+// Route::get('mypage', function(){
+//   $data = array(
+//     'var1' => 'Hamburger',
+//     'var2' => 'Hot Dog',
+//     'var3' => 'French Fries',
+//     'users' => App\User::all()
+//     );
+
+//   return view('mypage', $data);
+// });
 
 
 
