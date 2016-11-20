@@ -19,7 +19,7 @@ class UserController extends Controller
       $view = view('data', compact('users'))->render();
       return response()->json(['html'=>$view]);
     }
-    return view('infinite', compact('users'));
+    return view('users', compact('users'));
   }
 
   //This creates a JSON file of all my users
