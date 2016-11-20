@@ -5,7 +5,7 @@
   </head>
   <body>
 
-  <a href=" {{ URL::to('users') }}/{{ $user->id}}/">{{$user->fullname}}</a>
+  <a href=" {{ URL::to('individual') }}/{{ $user->id}}/">{{$user->fullname}}</a>
 
   <?php
     echo  '<br>';
