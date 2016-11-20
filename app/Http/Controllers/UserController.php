@@ -13,7 +13,7 @@ class UserController extends Controller
   //Pagination for main page
   public function users(Request $request)
   {
-    $users = User::paginate(10);
+    $users = User::paginate(50);
     
     if ($request->ajax()){
       $view = view('data', compact('users'))->render();
