@@ -17,7 +17,12 @@ Route::get('/', function () {
 });
 
 //This returns a JSON file
-Route::get('/json', 'UserController@json');
+Route::get('/json', 'UserController@all');
+
+Route::get('/json/{id}', 'UserController@individual'
+);
+
+Route::post('/json', 'RegisterController@create');
 
 //This returns a list of all users.  Will act as landing page, before would return welcome view page
 Route::get('/users', 'UserController@users');
