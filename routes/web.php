@@ -26,10 +26,6 @@ Route::get('/users', 'UserController@users');
 Route::get('/users/{id}', 'UserController@user'
 );
 
-Route::get('user', function(){
-  return view('user');
-});
-
 Route::get('mypage', function(){
   $data = array(
     'var1' => 'Hamburger',
