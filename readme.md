@@ -1,40 +1,24 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img width="150"src="https://laravel.com/laravel.png"></a></p>
+##RainbowConnection Backend
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+Here is my Laravel portion of the project.
 
-## About Laravel
+When I first started working on the project, I got a little carried away with Laravel and implemented things that probably should've been left for Ember.  Because of that, this repository is not just an API.  Rather, it includes code for:
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+- Full list of user entries (and working links to each individual's show page)
+- Display of favorite color field (no actual color change implemented)
+- Individual user profiles
+- Infinite Pagination
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Unfortunately I did not get my connections table working correctly with my users table.  I manually seeded a few entries to experiment, and came up with code that would display the correct list of connections for a user on each individual show page.  I did not create a factory to seed this however, because I realized all of that functionality should've been left for Ember once the Ember app connects with the API (This is when I switched over to the Ember portion).  That code still exists in this repository, and if you manually enter entries in the connections database you will be able to see that functionality working.  You'll also notice that the repository says there are two contributors.  This is because I tried to deploy to heroku very early on, not knowing that I'd be able to make Ember connect to a database running on a local server.  I'm not sure why trying to deploy to heroku resulted in a second 'contributor', but I moved on from that pretty soon afterwards.  I was the only person who contributed to the code in this repository.
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb combination of simplicity, elegance, and innovation give you tools you need to build any application with which you are tasked.
+Due to me having gone a little extra with Laravel, I realized I didn't completely create my API correctly.  As a result, moving over to Ember proved to be extra difficult since it was trying to connect with something that was not well established.  My Ember application was not able to successfully connect to my Laravel API.  No further functionality was implemented on Ember.
 
-## Learning Laravel
+I came back to fix my routes so that my API would fit better, but was still not able to get the connections table working or a stable connection between the two applications.
 
-Laravel has the most extensive and thorough documentation and video tutorial library of any modern web application framework. The [Laravel documentation](https://laravel.com/docs) is thorough, complete, and makes it a breeze to get started learning the framework.
+After cloning, you can run your migrations and seed the database.  I couldn't get the connections to work properly, so you will notice that seeding will only provide the other properties (fullname, favorite_color & email are all visible in the JSON.  However, users are all seeded with an encrypted password that allows for a login.  This was also implemented early on when I overthought the 'change color functionality', and thought that a user would only be able to change their favorite color if they were logged in).
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 900 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
 
-## Contributing
+As it stands, main routes take you to the API functions.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+- 'rainbowconnection.com' will redirect to 'rainbowconnection.com/users', which is a JSON of all of the users available.
+- 'rainbowconnection.com/users/{$id}' will take you to a single JSON object that belongs to the appropriate user.
