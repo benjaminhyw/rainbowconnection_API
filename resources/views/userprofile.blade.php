@@ -5,7 +5,7 @@
   </head>
   <body>
 
-  <a href=" {{ URL::to('users') }}/{{ $user->id}}/">{{$user->fullname}}</a>
+  <a href=" {{ URL::to('individual') }}/{{ $user->id}}/">{{$user->fullname}}</a>
 
   <?php
     echo  '<br>';
@@ -16,8 +16,12 @@
       $friend = DB::table('users')->where('id', $friend_id)->get();
 
 
+
+
       // This line allows me to click on any user's name and it will take me to their show page
       echo '<br><a href='.URL::to('/users').'/'.$friend_id. '>'.$friend[0]->fullname.'</a>';
+
+
 
     }
   ?>

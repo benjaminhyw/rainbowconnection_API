@@ -1,5 +1,7 @@
 <?php
 
+header('Access-Control-Allow-Origin: *');
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,33 +15,42 @@
 
 
 Route::get('/', function () {
-  return view('welcome');
+  return redirect('/users');
 });
 
 //This returns a JSON file
-Route::get('/json', 'UserController@json');
+Route::get('/users', 'UserController@all');
 
-//This returns a list of all users.  Will act as landing page, before would return welcome view page
-Route::get('/users', 'UserController@users');
-
-// This one should give me all of the connections associated with a user
-Route::get('/users/{id}', 'UserController@user'
+Route::get('/users/{id}', 'UserController@individual'
 );
 
-Route::get('user', function(){
-  return view('user');
-});
+Route::post('/users', 'RegisterController@create');
 
-Route::get('mypage', function(){
-  $data = array(
-    'var1' => 'Hamburger',
-    'var2' => 'Hot Dog',
-    'var3' => 'French Fries',
-    'users' => App\User::all()
-    );
 
-  return view('mypage', $data);
-});
+// The following routes were made before I had to come back to fix my API.  They used to be /users and /users/{id}, but I had to change that.  If you go to them however, you'll see that I implemented INFINITE PAGINATION on Laravel.  The second link takes you to the individual user show page, but I didn't implement infinite pagination there because I had to switch back to fixing my API.
+
+// Initially was the main page.  INFINITE PAGINATION functional.
+Route::get('/infinite', 'UserController@users');
+
+// Initially each individual's show page.
+Route::get('/individual/{id}', 'UserController@user'
+);
+
+
+
+
+// This code was a tutorial route, left for reference
+//
+// Route::get('mypage', function(){
+//   $data = array(
+//     'var1' => 'Hamburger',
+//     'var2' => 'Hot Dog',
+//     'var3' => 'French Fries',
+//     'users' => App\User::all()
+//     );
+
+//   return view('mypage', $data);
+// });
 
 
 
@@ -84,3 +95,8 @@ Route::get('mypage', function(){
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+Route::get('{data?}', function()
+{
+    return View::make('app');
+})->where('data', '.*');

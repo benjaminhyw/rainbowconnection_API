@@ -13,7 +13,7 @@ class UserController extends Controller
   //Pagination for main page
   public function users(Request $request)
   {
-    $users = User::paginate(10);
+    $users = User::paginate(50);
     
     if ($request->ajax()){
       $view = view('data', compact('users'))->render();
@@ -23,10 +23,17 @@ class UserController extends Controller
   }
 
   //This creates a JSON file of all my users
-  public function json(){
+  public function all(){
     $users = User::all();
     return $users;
   }
+
+  public function individual($id){
+    $user = User::find($id);
+    return $user;
+  }
+
+
 
   public function user($id){
     $user = User::find($id);
